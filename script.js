@@ -7,8 +7,18 @@ function numberSubmitted() {
     $(`.js-submit`).click(event => {
         event.preventDefault();
         console.log("Submit button is working");
-        let submittedNumber = 
+        submittedNumber();
+       
     });
+}
+
+function submittedNumber(){
+    let numberSelected = $('.js-number').val();
+    console.log(`submitted value is ${numberSelected}`);
+    if (numberSelected == "") {
+        numberSelected = 3;
+        console.log(`submitted value changed from blank to ${numberSelected}`);
+    }
 }
 
 function fetchDogs() {
