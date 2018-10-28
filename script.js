@@ -12,6 +12,7 @@ function numberSubmitted() {
     });
 }
 
+// captures number submitted, or defaults to 3 if nothing submitted.
 function submittedNumber(){
     let numberSelected = $('.js-number').val();
     console.log(`submitted value is ${numberSelected}`);
@@ -19,6 +20,11 @@ function submittedNumber(){
         numberSelected = 3;
         console.log(`submitted value changed from blank to ${numberSelected}`);
     }
+    else if ((numberSelected > 50) || (numberSelected < 1)) {
+        alert("Please select a number 1 through 50.");
+        return;
+    }
+    console.log(`submitted value is ${numberSelected}`)
 }
 
 function fetchDogs() {
