@@ -41,17 +41,26 @@ function submittedNumber(){
 function fetchDogs() {
     fetch(`${endpoint}`)
     .then(response => response.json())
-    // .then(responseJson => console.log(responseJson))
-    .then(responseJson => displayDogs(responseJson))
-    .catch(error => alert('Something went wrong. Try again later.'));
+    .then(responseJson => displayDog(responseJson))
+    .catch(error => alert('Something went wrong.'));
 }
 
-function displayDogs(responseJson) {
-    console.log(responseJson);
-    //replace the existing image with the new one
+function displayDog(responseJson) {
+    console.log(responseJson.message);
     $('.js-dogs').html(`<img src="${responseJson.message[0]}" class="results-img">`);
-    // //display the results section
-    // $('.results').removeClass('hidden');
 }
+
+// function fetchDogs() {
+//     fetch(`${endpoint}`)
+//     .then(response => response.json())
+//     .then(responseJson => allDogs(responseJson.message))
+//     .catch(error => alert('Something went wrong.'));
+// }
+
+// function allDogs(array){
+//     for (i = 0; i < array.length; i++){
+//         $(`.js-dogs`).append(`<img src="${responseJson.message[i]}" class="results-img">`);
+//     }
+// }
 
 $(numberSubmitted);
