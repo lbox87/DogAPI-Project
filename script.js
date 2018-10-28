@@ -7,15 +7,26 @@ function numberSubmitted() {
     $(`.js-submit`).click(event => {
         event.preventDefault();
         console.log("Submit button is working");
+        let submittedNumber = 
     });
 }
 
-function callDogs() {
-
+function fetchDogs() {
+    // fetch('https://dog.ceo/api/breeds/image/random')
+    // .then(response => response.json())
+    // .then(responseJson => 
+    //   displayResults(responseJson))
+    // .catch(error => alert('Something went wrong. Try again later.'));
 }
 
 function printDogs() {
-
+    // console.log(responseJson);
+    // //replace the existing image with the new one
+    // $('.results-img').replaceWith(
+    //   `<img src="${responseJson.message}" class="results-img">`
+    // )
+    // //display the results section
+    // $('.results').removeClass('hidden');
 }
 
 $(numberSubmitted);
