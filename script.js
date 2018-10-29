@@ -43,7 +43,7 @@ function fetchDogs() {
 function displayDog(responseJson) {
     console.log(responseJson);
     for (let i = 0; i < responseJson.message.length; i++) {
-        $(`.js-dogs`).append(`<img src="${responseJson.message[i]}" class="results-img">`);
+        $(`.js-dogs`).append(`<img src="${responseJson.message[i]}" class="col-3 results-img">`);
     }
 }
 
