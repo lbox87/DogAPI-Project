@@ -10,6 +10,11 @@ function numberSubmitted() {
         event.preventDefault();
         console.log("Submit button is working");
         submittedNumber();
+        // prevent values other than 1-50
+        if ((numberSelected > 50) || (numberSelected < 1)) {
+            alert("Please select a number 1 through 50.");
+            return;
+        }
         fetchDogs();
     });
 }
@@ -19,18 +24,13 @@ console.log(`submitted value is ${numberSelected}`);
 let endpoint = "";
 
 // captures number submitted, or defaults to 3 if nothing submitted.
-function submittedNumber(){
+function submittedNumber() {
     numberSelected = $('.js-number').val();
     console.log(`submitted value is ${numberSelected}`);
     // change empty submission to 3
     if (numberSelected == "") {
         numberSelected = 3;
         console.log(`submitted value changed from blank to ${numberSelected}`);
-    }
-    // prevent values other than 1-50
-    else if ((numberSelected > 50) || (numberSelected < 1)) {
-        alert("Please select a number 1 through 50.");
-        return;
     }
     console.log(`submitted value is ${numberSelected}`);
     endpoint = "https://dog.ceo/api/breeds/image/random/" + numberSelected;
@@ -40,26 +40,19 @@ function submittedNumber(){
 
 function fetchDogs() {
     fetch(`${endpoint}`)
-    .then(response => response.json())
-    .then(responseJson => displayDog(responseJson))
-    .catch(error => {
+        .then(response => response.json())
+        .then(responseJson => displayDog(responseJson))
+        .catch(error => {
             console.log(error);
             alert('Something went wrong, check console.');
         });
-       
+
 }
 
-function displayDog(responseJson){
-    for (let i = 0; i < responseJson.message.length; i++){
+function displayDog(responseJson) {
+    for (let i = 0; i < responseJson.message.length; i++) {
         $(`.js-dogs`).append(`<img src="${responseJson.message[i]}" class="results-img">`);
     }
 }
-
-// function fetchDogs() {
-//     fetch(`${endpoint}`)
-//     .then(response => response.json())
-//     .then(responseJson => allDogs(responseJson.message))
-//     .catch(error => alert('Something went wrong.'));
-// }
 
 $(numberSubmitted);
