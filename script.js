@@ -42,19 +42,18 @@ function fetchDogs() {
     fetch(`${endpoint}`)
     .then(response => response.json())
     .then(responseJson => displayDog(responseJson))
-    .catch(error => alert('Something went wrong.'));
+    .catch(error => {
+            console.log(error);
+            alert('Something went wrong, check console.');
+        });
+       
 }
 
-function displayDog(responseJson) {
-    console.log(responseJson.message);
-    $('.js-dogs').append(`<img src="${responseJson.message[0]}" class="results-img">`);
+function displayDog(responseJson){
+    for (let i = 0; i < responseJson.message.length; i++){
+        $(`.js-dogs`).append(`<img src="${responseJson.message[i]}" class="results-img">`);
+    }
 }
-
-// function displayDog(responseJson){
-//     for (i = 0; i < responseJson.message.length; i++){
-//         $(`.js-dogs`).append(`<img src="${responseJson.message[i]}" class="results-img">`);
-//     }
-// }
 
 // function fetchDogs() {
 //     fetch(`${endpoint}`)
@@ -62,7 +61,5 @@ function displayDog(responseJson) {
 //     .then(responseJson => allDogs(responseJson.message))
 //     .catch(error => alert('Something went wrong.'));
 // }
-
-
 
 $(numberSubmitted);
