@@ -9,6 +9,7 @@ function numberSubmitted() {
     $(`.js-submit`).click(event => {
         event.preventDefault();
         console.log("Submit button is working");
+        clearValues();
         submittedNumber();
         // prevent values other than 1-50
         if ((numberSelected > 50) || (numberSelected < 1)) {
@@ -53,6 +54,12 @@ function displayDog(responseJson) {
     for (let i = 0; i < responseJson.message.length; i++) {
         $(`.js-dogs`).append(`<img src="${responseJson.message[i]}" class="results-img">`);
     }
+}
+
+function clearValues() {
+    numberSelected = "";
+    endpoint = "";
+    $(`.js-dogs`).html("");
 }
 
 $(numberSubmitted);
